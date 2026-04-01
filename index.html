@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4yffxXVNZJQxPKRG0BuMprz-qi_FSPyPlEc6qvtl1p0" />
+    <title>AAUP - Colorado State University</title>
+    <style>
+        body {
+            background-color: rgb(164, 45, 65);
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .headerB {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .title .blue {
+            color: rgb(40, 142, 244);
+        }
+        
+        .event-info {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .event-info-small {
+            text-align: left;
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .event-info a {
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .event-info a:hover {
+            color: rgb(200, 200, 200);
+        }
+        
+        .download-section {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .download-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .columns-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .column-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .column a {
+            color: white;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+
+        .columntext a {
+            color: white;
+            font-size: 18px;
+        }
+        
+        .column a:hover {
+            color: rgb(200, 200, 200);
+        }
+        
+        .header a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .headerB a {
+            color: white;
+            text-decoration: underline;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        
+        .column .learn-more {
+            display: block;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid white;
+            font-size: 16px;
+        }
+        
+        .partnership-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .partnership-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .partnership-list li {
+            margin-bottom: 10px;
+            margin-left: 20px;
+            font-size: 18px;
+            color: white;
+
+        }
+        
+        .partnership-list li:before {
+            content: "• ";
+            margin-left: -20px;
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 1024px) {
+            .partnership-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .partnership-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .partnership-list a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .partnership-list a:hover {
+            color: rgb(200, 200, 200);
+        }
+        
+        .download-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: white;
+            color: rgb(184, 65, 85);
+            padding: 12px 30px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .download-btn:hover {
+            background-color: rgb(200, 200, 200);
+        }
+        
+        .app-btn {
+            display: inline-block;
+            background-color: white;
+            color: rgb(184, 65, 85);
+            padding: 20px 50px;
+            font-size: 28px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .app-btn:hover {
+            background-color: rgb(200, 200, 200);
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        Community <span class="blue">No</span>t <span class="blue">Kings</span>
+    </div>
+    
+    <div class="event-info">
+        March 28, 2026, Civic Center Park, Fort Collins CO.
+    </div>
+    
+    <div class="video-container">
+        <video controls poster="./images/credits.png">
+            <source src="images/FishMovieMedium.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="download-btn-container">
+        <a href="./images/FishMovieMedium.mp4" download class="download-btn">↓ Download and Share the Animation</a>
+    </div>
+    
+    <div class="download-btn-container">
+        <a href="./install.html" class="app-btn" target="_blank">Get The NoKingsAAUP App</a>
+    </div>
+
+    <div class="headerB">
+        <a href="./About-the-app.html" class="learn-more">Learn more here!</a>
+    </div>
+
+    <div class="header">
+        The NoKingsAAUP app was brought to you by:
+    </div>
+    <div class="headerB">
+        <a href="https://aaupcsu.org" target="_blank">The American Association of University Professors,
+        Colorado State University</a>,
+    </div>
+    <div class="header">
+        in partnership with:
+    </div>
+    
+    <div class="partnership-container">
+        <ul class="partnership-list">
+            <li><a href="https://aflcio.org/" target="_blank">AFL-CIO</a></li>
+            <li><a href="https://dsafc.org/" target="_blank">DSA Fort Collins</a></li>
+            <li><a href="https://www.indivisible.org/" target="_blank">Indivisible Timnath</a></li>
+            <li><a href="https://www.lwv-larimercounty.org/" target="_blank">League of Women Voters Larimer County</a></li>
+            <li><a href="https://momsdemandaction.org/about/chapters/" target="_blank">Moms Demand Action</a></li>
+            <li><a href="https://www.partnersforpeacefc.org/" target="_blank">Partners for Peace</a></li>
+        </ul>
+        <ul class="partnership-list">
+            <li><a href="https://NoCo4Palestine.com" target="_blank">NoCo4Palestine</a></li>
+            <li><a href="https://www.notesofdissent.org/" target="_blank">Notes of Dissent Marching Band</a></li>
+            <li>Planned Parenthood of the Rocky Mountains</li>
+            <li><a href="https://pflagfortcollins.org/" target="_blank">PFLAG Fort Collins</a></li>
+            <li><a href="https://podernoco.com/" target="_blank">PODER</a></li>
+            <li><a href="https://www.indivisiblenoco.com/" target="_blank">IndivisibleNoCo</a></li>
+        </ul>
+        <ul class="partnership-list">
+            <li><a href="https://www.theiriscenter.org/" target="_blank">The Iris Center</a></li>
+            <li>Postcards and Tea</li>
+            <li><a href="https://protectcoloradosfuture.com/" target="_blank">Protect Colorado's Future</a></li>
+            <li><a href="https://SplashNoCo.org/" target="_blank">SPLASH</a></li>
+            <li><a href="https://stemira.org/" target="_blank">STEM Interdisciplinary Rams Alliance</a></li>
+            <li><a href="https://treeswaterpeople.org/" target="_blank">Trees Water People</a></li>
+        </ul>
+    </div>
+
+    <div class="event-info-small" style="margin-top: 10px;">
+        If you have issues or suggestions for the improvement of the NoKingsAAUP app, please contact support at <a href="mailto:nokingsapp@gmail.com">nokingsapp@gmail.com</a>.
+    </div>
+
+    <div class="event-info-small" style="margin-top: 10px;">
+        The NoKingsAAUP app was created by volunteers for the AAUP-CSU. If you would like to volunteer or donate to support our future efforts, please <a href="https://aaupcsu.org/join-and-support/" target="_blank">Visit AAUP-CSU by clicking here</a>.
+    </div>
+
+    <div class="event-info-small" style="margin-top: 10px;">
+        Please note that the NoKingsAAUP App collects only the information that you provide and can be used anonymously. See our <a href="./PRIVACY_POLICY.md" target="_blank">Privacy Policy</a> for details on what information is and is not collected in the NoKingsAAUP app, and how we protect your data and privacy.
+    </div>
+
+    <div class="event-info-small" style="margin-top: 10px;">
+        You can delete your information at any time directly from the app or by <a href="https://forms.gle/ydhNHFphvogEpt4z5" target="_blank">Clicking here</a> and entering the email for the account you wish to delete.
+    </div>
+
+    <script>
+        function setAppButtonHoverMessage() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isiOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+            const isAndroid = /android/i.test(ua);
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const appBtn = document.querySelector(".app-btn");
+                if (appBtn) {
+                    if (isAndroid) {
+                        appBtn.title = "Get NoKingsAAUP at Google Play";
+                    } else if (isiOS) {
+                        appBtn.title = "Get NoKingsAAUP at Apple Test Flight";
+                    } else {
+                        appBtn.title = "Click here to get the NoKingsAAUP App";
+                    }
+                }
+            });
+        }
+        setAppButtonHoverMessage();
+    </script>
+</body>
+</html>

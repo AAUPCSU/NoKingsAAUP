@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Install App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+/* =========================
+   CONFIGURATION
+========================= */
+
+const prerelease = true;          // true = beta builds
+const prereleasePlay = false;          // true = beta builds
+const androidPlay = "https://play.google.com/store/apps/details?id=com.nokings.aaup";        // Google Play
+const iosTestflight = "https://testflight.apple.com/join/sZ2jnFWW";      // TestFlight
+const iosAppStore = "https://testflight.apple.com/join/sZ2jnFWW";        // Apple App Store
+const androidApk = "https://play.google.com/store/apps/details?id=com.nokings.aaup";         // prerelease APK download
+
+const desktopPage = "./web-app/";         // optional landing page
+
+/* ========================= */
+
+function detectOS() {
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    const isiOS =
+        /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    const isAndroid = /android/i.test(ua);
+
+    return {isiOS, isAndroid};
+}
+
+function redirectWithDelay(url, customMessage = null, delaySeconds = 5) {
+    document.addEventListener("DOMContentLoaded", function() {
+        let countdown = delaySeconds;
+        const messageEl = document.getElementById("redirect-message");
+        
+        if (messageEl) {
+            if (customMessage) {
+                messageEl.innerHTML = customMessage.replace(/XXX/g, countdown);
+            } else {
+                messageEl.textContent = `Redirecting to ${url} in ${countdown} seconds`;
+            }
+            
+            const interval = setInterval(function() {
+                countdown--;
+                if (customMessage) {
+                    messageEl.innerHTML = customMessage.replace(/XXX/g, countdown);
+                } else {
+                    messageEl.textContent = `Redirecting to ${url} in ${countdown} seconds`;
+                }
+                
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    window.location.replace(url);
+                }
+            }, 1000);
+        } else {
+            setTimeout(function() {
+                window.location.replace(url);
+            }, delaySeconds * 1000);
+        }
+    });
+}
+
+function setHoverMessages() {
+    const {isiOS, isAndroid} = detectOS();
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll("a");
+        
+        links.forEach(link => {
+            if (isAndroid) {
+                link.title = "Get NoKingsAAUP at Google Play";
+            } else if (isiOS) {
+                link.title = "Get NoKingsAAUP at Apple Test Flight";
+            } else {
+                link.title = "Use the NoKingsAAUP app in your Browser";
+            }
+        });
+    });
+}
+
+function redirect() {
+
+    const {isiOS, isAndroid} = detectOS();
+
+    if (isAndroid) {
+        if (prereleasePlay) {
+            const AndroidPrereleaseMessage = `Early Access is now available. Redirecting to Google Play Store in XXX seconds.`;
+            redirectWithDelay(androidApk, AndroidPrereleaseMessage, 5);
+        } else {
+            const GooglePlayMessage = `Redirecting to Google Play page in XXX seconds.`;
+            redirectWithDelay(androidPlay, GooglePlayMessage, 0);
+        }
+        return;
+    }
+
+    if (isiOS) {
+        if (prerelease) {
+            const testflightMessage = `Early Access is now available on Apple TestFlight. Redirecting in XXX seconds.<br><br>If you have not done so previously, you will need to install Apple TestFlight to use the app.`;
+            redirectWithDelay(iosTestflight, testflightMessage, 3);
+        } else {
+            const appStoreMessage = `Redirecting to Apple App Store page in XXX seconds.`;
+            redirectWithDelay(iosAppStore, appStoreMessage, 0);
+        }
+        return;
+    }
+
+    /* Desktop or unknown platform */
+
+    if (desktopPage) {
+        const desktopMessage = `Redirecting to the Online NoKingsAAUP Web Browser App in XXX seconds. Please note that performance may be slower on desktop browsers. For the best experience, please use the app on an Android or iOS device.`;
+        redirectWithDelay(desktopPage, desktopMessage, 7);
+        return;
+    }
+
+    /* Redirect to index if neither Android nor iOS */
+    const desktopMessage = `Redirecting to the Online NoKingsAAUP Web Browser App in XXX seconds. Please note that performance may be slower on desktop browsers. For the best experience, please use the app on an Android or iOS device.`;
+    redirectWithDelay("./web-app/", desktopMessage, 7);
+    return;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("manual-links").style.display = "block";
+    });
+}
+
+setHoverMessages();
+redirect();
+</script>
+
+<style>
+body{
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align:center;
+    margin-top:80px;
+    padding:20px;
+}
+
+a{
+    display:block;
+    margin:12px;
+    font-size:20px;
+}
+
+.small{
+    color:#666;
+    font-size:14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Redirecting to the app install page…</h2>
+<p id="redirect-message"></p>
+
+<div id="manual-links" style="display:none">
+
+<p>If you were not redirected, choose your platform:</p>
+
+<a href="XXX">Android (Google Play)</a>
+<a href="PPP">Android Beta (APK download)</a>
+
+<a href="YYY">iOS Beta (TestFlight)</a>
+<a href="ZZZ">iOS App Store</a>
+
+<p class="small">If installing the Android beta, you may need to allow
+"Install unknown apps" in your Android settings.</p>
+
+</div>
+
+</body>
+</html>
