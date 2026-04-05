@@ -37,7 +37,8 @@ This two-step process protects your email in the cache while still allowing AAUP
 
 ❌ We do **NOT** collect any personal data you don't provide  
 ❌ We do **NOT** sell, trade, or rent your information  
-❌ We do **NOT** take photos or record audio or video 
+❌ We do **NOT** record audio or video 
+❌ We do **NOT** take or store photos without your explicit action to upload or download sign images
 ❌ We do **NOT** track your location  
 ❌ We do **NOT** collect browsing history  
 
@@ -76,4 +77,4 @@ You can:
 **For the complete privacy policy, visit:**  
 📄 https://munsky.github.io/NoKingsAAUP/PRIVACY_POLICY.md
 
-**Last Updated:** March 6, 2026  
+**Last Updated:** April 5, 2026  
