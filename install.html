@@ -34,6 +34,16 @@ function detectOS() {
     return {isiOS, isAndroid};
 }
 
+function isSafari() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Check if it's Safari (but not Chrome on iOS)
+    // Safari on iOS contains "Safari" and "Version" but NOT "CriOS" or "Chrome"
+    const isSafariUA = /Safari\//.test(ua) && !/CriOS|Chrome/.test(ua);
+    
+    return isSafariUA;
+}
+
 function redirectWithDelay(url, customMessage = null, delaySeconds = 5) {
     document.addEventListener("DOMContentLoaded", function() {
         let countdown = delaySeconds;
@@ -63,6 +73,20 @@ function redirectWithDelay(url, customMessage = null, delaySeconds = 5) {
             setTimeout(function() {
                 window.location.replace(url);
             }, delaySeconds * 1000);
+        }
+    });
+}
+
+function showMessageWithLink(url, customMessage = null) {
+    document.addEventListener("DOMContentLoaded", function() {
+        const messageEl = document.getElementById("redirect-message");
+        
+        if (messageEl) {
+            if (customMessage) {
+                messageEl.innerHTML = customMessage.replace(/LINK/g, `<a href="${url}" style="color: #0066cc; text-decoration: underline;">${url}</a>`);
+            } else {
+                messageEl.innerHTML = `<p>To install pre-release software, you will need to download and install Apple TestFlight, and then follow <a href="${url}" style="color: #0066cc; text-decoration: underline;">this link</a> using the SAFARI browser.</p>`;
+            }
         }
     });
 }
@@ -101,6 +125,15 @@ function redirect() {
     }
 
     if (isiOS) {
+        // Check if Safari browser
+        if (!isSafari()) {
+            // Not Safari - show message with link instead of redirecting
+            const nonSafariMessage = `To install pre-release software, you will need to download and install Apple TestFlight, and then follow <a href="${iosTestflight}" style="color: #0066cc; text-decoration: underline;">this link</a> using the SAFARI browser.`;
+            showMessageWithLink(iosTestflight, nonSafariMessage);
+            return;
+        }
+        
+        // Is Safari - proceed with normal redirect
         if (prerelease) {
             const testflightMessage = `Early Access is now available on Apple TestFlight. Redirecting in XXX seconds.<br><br>If you have not done so previously, you will need to install Apple TestFlight to use the app.`;
             redirectWithDelay(iosTestflight, testflightMessage, 3);
